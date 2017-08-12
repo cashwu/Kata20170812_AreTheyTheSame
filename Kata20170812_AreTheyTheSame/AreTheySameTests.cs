@@ -7,7 +7,7 @@ namespace Kata20170812_AreTheyTheSame
     [TestClass]
     public class AreTheySameTests
     {
-        
+
         [TestMethod]
         public void input_2_and_4_should_return_true()
         {
@@ -40,6 +40,15 @@ namespace Kata20170812_AreTheyTheSame
         {
             var a = new[] { 1, 2 };
             var b = new[] { 4, 1 };
+
+            TheySameShouldBeTrue(a, b);
+        }
+
+        [TestMethod]
+        public void input_121_144_19_161_19_144_19_11_should_return_true()
+        {
+            var a = new[] { 121, 144, 19, 161, 19, 144, 19, 11 };
+            var b = new[] { 11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19 };
 
             TheySameShouldBeTrue(a, b);
         }
