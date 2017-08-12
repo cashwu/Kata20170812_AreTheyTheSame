@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Kata20170812_AreTheyTheSame
 {
     [TestClass]
-    public class UnitTest1
+    public class AreTheySameTests
     {
         [TestMethod]
         public void TestMethod1()
