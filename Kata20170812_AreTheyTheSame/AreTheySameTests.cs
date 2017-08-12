@@ -53,6 +53,24 @@ namespace Kata20170812_AreTheyTheSame
             TheySameShouldBeTrue(a, b);
         }
 
+        [TestMethod]
+        public void input_2_2_3_and_4_9_9_should_return_true()
+        {
+            var a = new[] { 2, 2, 3 };
+            var b = new[] { 4, 9, 9 };
+
+            TheySameShouldBeFalse(a, b);
+        }
+
+        [TestMethod]
+        public void input_null_and_4_9_9_should_return_true()
+        {
+            int[] a = null;
+            var b = new[] { 4, 9, 9 };
+
+            TheySameShouldBeFalse(a, b);
+        }
+
         private static void TheySameShouldBeFalse(int[] a, int[] b)
         {
             Assert.IsFalse(new AreTheySame().comp(a, b));
@@ -68,14 +86,19 @@ namespace Kata20170812_AreTheyTheSame
     {
         public bool comp(int[] a, int[] b)
         {
-            var bList = b.ToList();
+            if (a == null || b == null)
+            {
+                return false;
+            }
+
+            var listB = b.ToList();
 
             foreach (var item in a)
             {
-                bList.Remove(item * item);
+                listB.Remove(item * item);
             }
 
-            return bList.Count == 0;
+            return listB.Count == 0;
         }
     }
 }
