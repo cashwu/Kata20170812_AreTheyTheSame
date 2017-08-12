@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170812_AreTheyTheSame
@@ -6,6 +7,7 @@ namespace Kata20170812_AreTheyTheSame
     [TestClass]
     public class AreTheySameTests
     {
+        
         [TestMethod]
         public void input_2_and_4_should_return_true()
         {
@@ -24,6 +26,24 @@ namespace Kata20170812_AreTheyTheSame
             TheySameShouldBeFalse(a, b);
         }
 
+        [TestMethod]
+        public void input_1_2_and_1_4_should_return_true()
+        {
+            var a = new[] { 1, 2 };
+            var b = new[] { 1, 4 };
+
+            TheySameShouldBeTrue(a, b);
+        }
+
+        [TestMethod]
+        public void input_1_2_and_4_1_should_return_true()
+        {
+            var a = new[] { 1, 2 };
+            var b = new[] { 4, 1 };
+
+            TheySameShouldBeTrue(a, b);
+        }
+
         private static void TheySameShouldBeFalse(int[] a, int[] b)
         {
             Assert.IsFalse(new AreTheySame().comp(a, b));
@@ -39,7 +59,14 @@ namespace Kata20170812_AreTheyTheSame
     {
         public bool comp(int[] a, int[] b)
         {
-            return a[0] * a[0] == b[0];
+            var bList = b.ToList();
+
+            foreach (var item in a)
+            {
+                bList.Remove(item * item);
+            }
+
+            return bList.Count == 0;
         }
     }
 }
