@@ -91,14 +91,7 @@ namespace Kata20170812_AreTheyTheSame
                 return false;
             }
 
-            var listB = b.ToList();
-
-            foreach (var item in a)
-            {
-                listB.Remove(item * item);
-            }
-
-            return listB.Count == 0;
+            return a.Select(i => i * i).OrderBy(x => x).SequenceEqual(b.OrderBy(x => x)); 
         }
     }
 }
