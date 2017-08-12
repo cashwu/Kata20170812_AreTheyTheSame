@@ -15,6 +15,20 @@ namespace Kata20170812_AreTheyTheSame
             TheySameShouldBeTrue(a, b);
         }
 
+        [TestMethod]
+        public void input_2_and_5_should_return_false()
+        {
+            var a = new[] { 2 };
+            var b = new[] { 5 };
+
+            TheySameShouldBeFalse(a, b);
+        }
+
+        private static void TheySameShouldBeFalse(int[] a, int[] b)
+        {
+            Assert.IsFalse(new AreTheySame().comp(a, b));
+        }
+
         private static void TheySameShouldBeTrue(int[] a, int[] b)
         {
             Assert.IsTrue(new AreTheySame().comp(a, b));
@@ -25,7 +39,7 @@ namespace Kata20170812_AreTheyTheSame
     {
         public bool comp(int[] a, int[] b)
         {
-            return true;
+            return a[0] * a[0] == b[0];
         }
     }
 }
